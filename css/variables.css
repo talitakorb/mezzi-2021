@@ -1,0 +1,236 @@
+@charset "UTF-8";
+/** Fontes **/
+@font-face {
+  font-family: "quincy-bold";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fontes/quincy-bold.woff") format("woff"), url("fontes/quincy-bold.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "quincy-black";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fontes/quincy-black.woff") format("woff"), url("fontes/quincy-black.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "bastia";
+  font-style: normal;
+  font-weight: normal;
+  src: url("fontes/bastia.woff") format("woff"), url("fontes/bastia.woff2") format("woff2");
+}
+
+/** VARIÁVEIS **/
+/** COLORS **/
+/** Box Shadow **/
+/** Transition **/
+/** Border Radius **/
+/** GERAL **/
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
+  }
+}
+
+@media (min-width: 1366px) {
+  .container {
+    width: 1300px;
+  }
+}
+
+body {
+  background: #fff;
+  color: #313131;
+  font-family: "Roboto", sans-serif;
+  font-size: 17px;
+  line-height: 130%;
+  text-align: left;
+  margin: 0px;
+  padding: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+blockquote {
+  background: none;
+  padding: 35px;
+  margin: 30px 0;
+  border: none;
+  border-left: 5px solid #bdadaf;
+  background: #f5f3f3;
+  font-style: italic;
+}
+
+blockquote p {
+  margin: 0 !important;
+}
+
+hr {
+  background: #fff;
+  border: 0;
+  height: 2px;
+  margin: 35px 0;
+}
+
+a {
+  text-decoration: none;
+  color: #9a64c6;
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
+}
+
+a:hover, a:focus {
+  color: #9a64c6;
+  text-decoration: none !important;
+}
+
+strong, b {
+  color: #313131;
+  font-weight: 700;
+}
+
+ul, ol {
+  padding: 0;
+}
+
+img, button {
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+img.alignleft {
+  float: left;
+  margin: 0 25px 0 0 !important;
+}
+
+img.alignright {
+  float: right;
+  margin: 0 0 0 25px !important;
+}
+
+pre.prettyprint {
+  margin: 15px auto !important;
+  width: 91% !important;
+}
+
+.wp-caption {
+  width: 100% !important;
+  margin-bottom: -25px;
+}
+
+.wp-caption-text {
+  bottom: 60px;
+  color: #fff;
+  display: inline-block;
+  left: 20px;
+  margin: 0;
+  max-width: 93%;
+  padding: 5px 15px !important;
+  font-size: 11px;
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+::selection {
+  background: #bdadaf;
+  color: #fff;
+}
+
+::-moz-selection {
+  background: #bdadaf;
+  color: #fff;
+}
+
+.viewport {
+  overflow: hidden;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+@media (max-width: 1024px) {
+  .viewport {
+    position: relative;
+  }
+}
+
+.extend-paginacao {
+  font-size: 20px;
+  font-family: "bastia", sans-serif;
+  padding: 23px 25px 20px;
+  margin: 0px 6px;
+  min-width: 45px;
+  text-decoration: none;
+  border: 1px solid #9a64c6;
+  background: none;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}

@@ -1,0 +1,3721 @@
+/*!
+Theme Name: Mezzi 2021
+Theme URI: http://mezzidigital.com.br
+Description: Tema desenvolvido por Mezzi Digital
+Author: Mezzi Digital
+Author URI: http://mezzidigital.com.br/
+Version: 1.0
+*/
+
+
+@import 'css/variables';
+
+
+
+// --------------------- GENERALS
+.titulo {
+font-family: $bastia;
+color: $preto;
+font-size: 55px;
+line-height: 130%;
+position: relative;
+z-index: 9;
+width: 60%;
+text-align: left;
+
+	@include breakpoint(1024) {
+		font-size: 45px;
+	}
+	
+	@include breakpoint(600) {
+		width: 95%;
+		text-align: center;
+		margin: 0 auto
+	}	
+
+	@include breakpoint(425) {
+		font-size: 35px;
+	}	
+	
+	@include breakpoint(375) {
+		font-size: 30px;
+	}		
+}
+
+.center {
+	margin: 0 auto;
+	text-align: center;
+}
+
+@mixin cover {
+	height: 0;	
+	overflow: hidden;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center top;	
+}
+
+
+
+
+
+// --------------------- MENU
+.menu-nav-header {
+height: 85px;
+width: 100%;
+position: relative;
+z-index: 99;
+display: -webkit-box;
+display: -ms-flexbox;
+display: flex;
+-webkit-box-align: center;
+-ms-flex-align: center;
+align-items: center;
+top: 0;
+@include transition(all .2s ease);
+
+	.hold-header {
+		display: -webkit-box;
+		display: -ms-flexbox;
+		display: flex;
+		-webkit-box-pack: justify;
+		-ms-flex-pack: justify;
+		justify-content: space-between;
+		-webkit-box-align: center;
+		-ms-flex-align: center;
+		align-items: center;
+		position: relative;
+	}
+
+	.container {
+		@include breakpoint(767) {
+			width: 90%;
+		}
+	}
+		
+	#brand {
+	width: 100px;
+
+		img {vertical-align: inherit}
+	}   
+		
+	ul {
+	margin: 0;
+
+		@include breakpoint(767) {
+			display: none;
+		}	
+
+		li {
+		display: inline-block;
+		padding: 0;
+		margin: 0 20px;
+		cursor: pointer;
+		position: relative;
+		-webkit-transition: all 0.3s ease-out;
+		transition: all 0.3s ease-out;
+		}        
+
+		a {
+			color: $preto;
+			font-family: $bastia;
+			text-transform: lowercase;
+			font-size: 18px;
+			letter-spacing: 1px;
+			position: relative;
+			overflow: hidden;
+			padding: 10px 0;
+
+			&:hover {color: $roxo}
+
+			.fab {margin: 0 5px;}		
+		}
+
+		.menu-item a:before {
+			content: "";
+			position: absolute;
+			z-index: -1;
+			left: 51%;
+			right: 51%;
+			bottom: 0px;
+			background: $roxo;
+			height: 2px;
+			-webkit-transition-property: left, right;
+			transition-property: left, right;
+			-webkit-transition-duration: 0.3s;
+			transition-duration: 0.3s;
+			-webkit-transition-timing-function: ease-out;
+			transition-timing-function: ease-out;
+		}	
+		
+		.menu-item a:hover:before, .menu-item a:focus:before, .menu-item a:active:before {
+			left: 0;
+			right: 0;
+		}	
+	}    
+
+	#toggle {
+	position: absolute;
+	right: 0;
+	top: 50%;
+	-webkit-transform: translate(0, -50%);
+	transform: translate(0, -50%);
+	z-index: 999;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+	float: right;
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	visibility: hidden;
+	opacity: 0;
+
+		@include breakpoint(767) {
+			visibility: visible;
+			opacity: 1;
+		}	
+
+		.span {
+			height: 7px;
+			background: $roxo;
+			margin: 5px auto;
+			-webkit-backface-visibility: hidden;
+					backface-visibility: hidden;
+		}
+
+		&.on {
+
+			#one {
+				-webkit-transform: rotate(45deg) translateX(6px) translateY(6px);
+						transform: rotate(45deg) translateX(6px) translateY(6px);
+						background: $branco;
+			}
+		
+			#two {
+				opacity: 0;
+			}	
+		
+			#three {
+				-webkit-transform: rotate(-45deg) translateX(10px) translateY(-12px);
+						transform: rotate(-45deg) translateX(10px) translateY(-12px);
+						background: $branco;
+			}	
+		} 
+	}
+
+	#resize {
+	top: 0;
+	z-index: 99;
+	position: absolute;
+	background: $roxo;
+	width: 100%;
+	height: 100vh;
+	visibility: hidden;
+	opacity: 0;
+	-webkit-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	display: table;
+	//padding: 0 50px;
+
+		@include breakpoint-min(767) {
+			visibility: hidden !important;
+		}	
+
+		ul {
+		height: 50px;
+		display: table-cell;
+		vertical-align: middle;
+		
+			li {
+			display: block;
+			text-align: center;
+			padding: 15px 30px;
+			text-align: center;
+			font-size: 20px;
+			line-height: 28px;
+			cursor: pointer;
+			-webkit-transition: all 0.3s ease-out;
+			transition: all 0.3s ease-out;
+		
+				a {
+					color: $branco;
+					text-transform: uppercase;
+					letter-spacing: 5px;
+				}	
+		
+				&:hover a {
+					color: $opaco;
+					-webkit-transition: all 0.3s ease-out;
+					transition: all 0.3s ease-out;			
+				}		
+			}	
+		}
+
+		&.active {
+			visibility: visible;
+			opacity: 0.99;
+		}
+	}	
+}
+
+// --------------------- HERO
+.hero {
+position: relative;
+overflow: hidden;
+width: 100%;
+height: 0;
+padding-bottom: 100vh;
+background: $opaco_claro;
+
+	@include breakpoint-min(1920) {
+		padding-bottom: 90vh;
+	}
+
+	@include breakpoint-min(2560) {
+		padding-bottom: 66vh;
+	}	
+
+	@include breakpoint(1024) {
+		padding-bottom: 70%;
+	}	
+
+	@include breakpoint(992) {
+		padding-bottom: 85%;
+	}
+	
+	@include breakpoint(800) {
+		padding-bottom: 95%;
+	}	
+
+	@include breakpoint(600) {
+		padding-bottom: 107%;
+	}	
+	
+	@include breakpoint(575) {
+		padding-bottom: 150%;
+	}	
+	
+	@include breakpoint(425) {
+		padding-bottom: 155%;
+	}		
+
+	@include breakpoint(375) {
+		padding-bottom: 170%;
+	}	
+
+	@mixin animated-lines {
+		position: absolute;
+		transform: rotate(-70deg);
+		width: 70%;
+		fill: none;
+		stroke: $opaco;
+		stroke-width: 0.1px;
+		vector-effect: non-scaling-stroke;		
+	}
+
+	.animated-lines {
+	top: -265px;		
+	left: -180px;
+	@include animated-lines;
+
+		@include breakpoint(1200) {
+			top: -140px;
+			left: -140px;
+		}
+
+		@include breakpoint(767) {
+			top: -60px;
+			left: -100px;
+		}
+		
+		@include breakpoint(575) {
+			top: -35px;
+			left: -67px;
+		}		
+	}
+
+	.animated-lines-two {
+	bottom: -265px;	
+	right: -180px;
+	@include animated-lines;
+
+		@include breakpoint(1200) {
+			bottom: -170px;
+			right: -125px;
+		}
+
+		@include breakpoint(767) {
+			bottom: -95px;
+			right: -55px;
+		}		
+	}
+
+	.img-hero-inicio {
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 50%;
+	padding-bottom: 100vh;
+	@include cover;	
+
+		@include breakpoint-min(1920) {
+			padding-bottom: 90vh;
+		}
+		
+		@include breakpoint-min(2560) {
+			padding-bottom: 66vh;
+		}	
+
+		@include breakpoint(1024) {
+			padding-bottom: 70%;
+		}	
+
+		@include breakpoint(992) {
+			width: 100%;
+			opacity: 0.1;
+			padding-bottom: 85%;
+		}
+
+		@include breakpoint(800) {
+			padding-bottom: 95%;
+		}			
+
+		@include breakpoint(600) {
+			padding-bottom: 107%;
+		}	
+		
+		@include breakpoint(575) {
+			padding-bottom: 150%;
+		}			
+
+		@include breakpoint(425) {
+			padding-bottom: 170%;
+		}		
+	}
+
+
+
+	@mixin conteudo-hero {
+		position: relative;
+		z-index: 9;
+		text-align: left;	
+	}
+
+	@mixin titulo-paginas {
+	width: 40%;
+	line-height: 100%;
+	font-family: $bastia;
+	color: $preto;	
+
+		@include breakpoint(1280) {
+			font-size: 5.5rem !important;
+		}
+
+		@include breakpoint(767) {
+			font-size: 4.5rem !important;
+		}
+		
+		@include breakpoint(425) {
+			font-size: 3.5rem !important;
+		}		
+		
+		@include breakpoint(375) {
+			font-size: 3rem !important;
+		}			
+	}	
+
+
+
+	.conteudo-home {
+	width: 45%;
+	margin: 0;
+	//padding-top: 5.5%;
+	transform: translate3d(0%, 16%, 0);
+	@include conteudo-hero;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 50%, 0);
+		}	
+
+		@include breakpoint-min(1920) {
+			transform: translate3d(0%, 40%, 0);
+		}
+
+
+		@include breakpoint(1280) {
+			transform: translate3d(0%, 19%, 0);
+		}
+		
+		@include breakpoint(992) {
+			margin: 0 auto;
+			width: 80%;
+			text-align: center;
+			transform: translate3d(0%, 35%, 0);
+		}
+
+		@include breakpoint(575) {
+			transform: translate3d(0%, 7%, 0);
+		}	
+		
+		@include breakpoint(480) {
+			transform: translate3d(0%, 15%, 0);
+		}		
+
+		@include breakpoint(425) {
+			width: 95%;
+			transform: translate3d(0%, 12%, 0);
+		}	
+		
+		@include breakpoint(375) {
+			transform: translate3d(0%, 7%, 0);
+		}			
+	
+
+		.titulo-inicio {
+		font-size: 55px;
+		line-height: 120%;
+		font-family: $bastia;
+		color: $preto;
+
+			@include breakpoint(1024) {
+				font-size: 45px;
+			}	
+
+			@include breakpoint(767) {
+				font-size: 30px;
+			}	
+			
+			@include breakpoint(575) {
+				font-size: 30px;
+			}			
+
+			@include breakpoint(375) {
+				font-size: 28px;
+			}
+			
+			@include breakpoint(320) {
+				font-size: 25px;
+			}			
+
+			span {
+			color: $roxo;
+			font-family: $bastia;
+			}
+		}
+
+		.descricao-inicio {
+		color: $preto;
+		margin-top: 20px;
+		margin-bottom: 5px;
+		font-size: 18px;
+		line-height: 140%;
+		font-weight: 400;
+
+			strong {color: $preto; font-weight: 600;}
+
+			@include breakpoint(375) {
+				font-size: 16px;
+			}				
+
+			@include breakpoint(320) {
+				font-size: 15px;
+			}			
+		}
+
+		.btn-inicio {
+		padding: 22px 30px;
+		margin-top: 25px;
+		background: $roxo;
+		color: $branco;
+		font-size: 16px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+		}
+	}
+
+	.conteudo-servicos {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 65%, 0);
+    display: flex;
+    justify-content: space-between;	
+	@include conteudo-hero;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 125%, 0);
+		}
+
+		@include breakpoint(1200) {
+			transform: translate3d(0%, 50%, 0);
+		}		
+
+		@include breakpoint(992) {
+			flex-direction: column;
+			transform: translate3d(0%, 25%, 0);
+		}			
+
+		@include breakpoint(767) {
+			transform: translate3d(0%, 15%, 0);
+		}
+
+		@include breakpoint(575) {
+			padding-top: 27%;
+		}	
+
+		@include breakpoint(375) {
+			padding-top: 15%;
+		}		
+		
+		.header-conteudo {
+		width: 40%;
+
+			@include breakpoint(992) {
+				width: 100%;
+			}	
+
+			.titulo {
+			font-size: 6.5rem;
+			@include titulo-paginas;
+
+				@include breakpoint(992) {
+					text-align: center;
+					width: 100%;
+				}				
+
+				span {
+				color: $roxo;
+				font-family: $bastia;
+				}
+			}
+		
+			.descricao {
+			color: $preto;
+			margin-top: 20px;
+			margin-bottom: 5px;
+			font-size: 17px;
+			line-height: 150%;
+
+				@include breakpoint(767) {
+					text-align: center;
+				}	
+
+				strong {color: $preto; font-weight: 600;}
+			}
+		}
+
+		.wrap-img-hero-servicos {
+		position: relative;
+		right: 0;
+		top: 0;
+		width: 60%;		
+		
+			@include breakpoint(1200) {
+				top: 35px;
+			}	
+			
+			@include breakpoint(992) {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+			}	
+
+			@include breakpoint(575) {
+				display: none;
+			}	
+
+			.img-hero-servicos {
+			border: 2px solid $opaco;
+			padding: 12px;
+			@include border-radius(100%);
+			position: absolute;
+
+				@include breakpoint(992) {
+					position: initial;
+				}	
+
+				&.one {
+				width: 50%;
+				right: 25%;
+				top: -45%;	
+				
+				@include breakpoint(992) {
+					width: 31%;
+				}	
+	
+				}
+
+				&.two {
+				width: 42%;
+				right: 0%;
+				top: 5%;		
+				
+					@include breakpoint(1200) {
+						top: -5%;
+					}
+					
+					@include breakpoint(992) {
+						width: 31%;
+					}	
+							
+				}
+				
+				&.three {
+				width: 34%;
+				right: 28%;
+				top: 60%;	
+				
+					@include breakpoint(1200) {
+						top: 37%;
+					}	
+					
+					@include breakpoint(992) {
+						width: 31%;
+					}						
+				}
+
+				@include breakpoint(767) {
+					&.three-talita {
+						display: block;
+						margin: 0 auto;
+						left: 0;
+						right: 0;
+						top: 10%;
+					}
+				}
+
+				@include breakpoint(575) {
+					&.three-talita {
+						width: 35%;
+					}
+				}			
+				
+				@include breakpoint(425) {
+					&.three-talita {
+						width: 43%;
+					}
+				}
+
+				.img-inner {
+					width: 100%;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center top;
+					padding-bottom: 100%;
+					@include border-radius(100%);
+				}
+			}	
+		}
+	
+	}	
+
+	.conteudo-projetos {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 85%, 0);
+	@include conteudo-hero;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 125%, 0);
+		}
+
+		@include breakpoint(575) {
+			transform: translate3d(0%, 95%, 0);
+		}	
+
+		@include breakpoint(425) {
+			transform: translate3d(0%, 75%, 0);
+		}		
+		
+		@include breakpoint(375) {
+			transform: translate3d(0%, 65%, 0);
+		}
+		
+		@include breakpoint(320) {
+			transform: translate3d(0%, 35%, 0);
+		}		
+		
+		
+		.titulo {
+		font-size: 6.5rem;
+		@include titulo-paginas;
+
+			@include breakpoint(992) {
+				font-size: 5rem;
+			}	
+
+			@include breakpoint(767) {
+				text-align: center;
+				width: 100%;
+				margin-bottom: 30px;
+				font-size: 4rem;
+			}
+
+			span {
+			color: $roxo;
+			font-family: $bastia;
+			}
+		}
+
+		.descricao {
+		width: 35%;
+		color: $preto;
+		margin-top: 20px;
+		margin-bottom: 5px;
+		font-size: 17px;
+		line-height: 150%;
+
+		
+			@include breakpoint(1200) {
+				width: 45%;
+			}	
+
+			@include breakpoint(767) {
+				margin: 0 auto;
+				width: 85%;
+				text-align: center;
+			}	
+
+			strong {color: $preto; font-weight: 600;}
+		}
+
+		.img-hero-projetos {
+		position: absolute;
+		width: 45%;
+		right: 10%;
+		top: -50%;
+
+			@include breakpoint(1200) {
+				width: 50%;
+				right: 0;
+			}
+
+			@include breakpoint(992) {
+				right: -10%;
+				width: 57%;
+				top: -30%;
+			}
+			
+			@include breakpoint(767) {
+				display: none;
+			}			
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}	
+	}	
+	
+	.conteudo-single {
+	width: 100%;
+	margin: 10% auto 0;
+    display: flex;
+	justify-content: space-between;	
+	align-items: center;	
+	@include conteudo-hero;
+
+		@include breakpoint-min(1680) {
+		}
+
+		@include breakpoint(1200) {
+			margin: 13% auto 0;
+		}
+
+		@include breakpoint(992) {
+			flex-direction: column;
+			margin: 10% auto 0;
+		}	
+
+		@include breakpoint(800) {
+			margin: 7% auto 0;
+		}		
+
+		@include breakpoint(320) {	
+			margin: 20% auto 0;
+		}			
+		
+
+		.header-conteudo {
+		width: 50%;
+
+			@include breakpoint(992) {
+				width: 100%;
+			}	
+
+			.titulo {
+			font-size: 5.8rem;
+			@include titulo-paginas;
+			width: 100%;
+
+				@include breakpoint(992) {
+					text-align: center;
+					width: 100%;
+				}				
+
+				span {
+				color: $roxo;
+				font-family: $bastia;
+				}
+			}
+		
+			.descricao {
+			color: $preto;
+			margin-top: 20px;
+			margin-bottom: 5px;
+			font-size: 17px;
+			line-height: 150%;
+
+				@include breakpoint(992) {
+					margin: 30px 0;
+					text-align: center;
+				}			
+
+				@include breakpoint(425) {	
+					font-size: 15px;
+					line-height: 135%;
+				}	
+
+				strong {color: $preto; font-weight: 600;}
+			}
+		}
+
+		.img-hero-single {
+		width: 43%;
+
+			@include breakpoint(992) {
+				width: 75%;
+	
+			}
+
+			@include breakpoint(767) {
+				top: 10%;				
+				width: 55%;
+			}		
+			
+			@include breakpoint(480) {	
+				width: 90%;
+			}			
+			
+			@include breakpoint(320) {	
+				display: none;
+			}				
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}		
+	}		
+
+	.conteudo-sobre {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 45%, 0);
+	display: flex;
+	justify-content: space-between;	
+	@include conteudo-hero;
+
+		@include breakpoint(1200) {
+			transform: translate3d(0%, 50%, 0);
+		}		
+
+		@include breakpoint(992) {
+			flex-direction: column;
+			transform: translate3d(0%, 25%, 0);
+		}			
+
+		@include breakpoint(767) {
+			transform: translate3d(0%, 15%, 0);
+		}
+
+		@include breakpoint(575) {
+			flex-direction: column-reverse;
+		}	
+
+		@include breakpoint(480) {
+			transform: translate3d(0%, 7%, 0);
+		}			
+
+		@include breakpoint(320) {
+			transform: translate3d(0%, 9%, 0);
+		}	
+
+		.header-conteudo {
+		width: 40%;
+
+			@include breakpoint(992) {
+				width: 100%;
+			}	
+
+			.titulo {
+			font-size: 6.5rem;
+			@include titulo-paginas;
+			width: 100%;			
+
+				@include breakpoint(992) {
+					text-align: center;
+					width: 100%;
+				}	
+				
+				@include breakpoint(575) {
+					margin: 20px 0
+				}	
+
+				@include breakpoint(320) {
+					font-size: 2rem !important;
+				}	
+
+				span {
+				color: $roxo;
+				font-family: $bastia;
+				}
+			}
+		
+			.descricao {
+			color: $preto;
+			margin-top: 20px;
+			margin-bottom: 5px;
+			font-size: 17px;
+			line-height: 150%;
+
+				@include breakpoint(767) {
+					text-align: center;
+				}	
+
+				strong {color: $preto; font-weight: 600;}
+			}
+		}
+
+		.wrap-img-hero-sobre {
+		position: relative;
+		right: 0;
+		top: 35px;
+		width: 60%;		
+		
+			@include breakpoint(1200) {
+				top: 35px;
+			}	
+			
+			@include breakpoint(992) {
+				width: 100%;
+				display: flex;
+				justify-content: space-between;
+			}	
+
+			@include breakpoint(575) {
+				justify-content: center;
+				top: 0;
+			}				
+
+			.img-hero-sobre {
+			border: 2px solid $opaco;
+			padding: 12px;
+			@include border-radius(100%);
+			position: absolute;
+
+				@include breakpoint(992) {
+					position: initial;
+				}	
+
+				@include breakpoint(320) {
+					padding: 6px;
+				}			
+
+				&.one {
+				width: 50%;
+				right: 25%;
+				top: -45%;
+						
+					@include breakpoint(1200) {
+						top: -25%;
+					}
+
+					@include breakpoint(992) {
+						width: 31%;
+					}	
+
+					@include breakpoint(575) {
+						display: none;
+					}						
+		
+				}
+
+				&.two {
+				width: 42%;
+				right: 0%;
+				top: -5%;	
+				
+					@include breakpoint(1200) {
+						top: 0%;
+					}
+					
+					@include breakpoint(992) {
+						width: 31%;
+					}	
+
+					@include breakpoint(575) {
+						display: none;
+					}						
+							
+				}
+				
+				&.three {
+				width: 34%;
+				right: 28%;
+				top: 45%;
+				
+					@include breakpoint(1200) {
+						top: 35%;
+					}	
+					
+					@include breakpoint(992) {
+						width: 31%;
+					}	
+					
+					@include breakpoint(575) {
+						top: 0;
+						width: 50%;
+					}	
+
+					@include breakpoint(320) {
+						width: 45%;
+					}	
+				}
+
+				.img-inner {
+					width: 100%;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center top;
+					padding-bottom: 100%;
+					@include border-radius(100%);
+				}
+			}	
+		}		
+	
+	}	
+
+	.conteudo-blog {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 85%, 0);
+	@include conteudo-hero;
+	margin-top: 10%;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 125%, 0);
+		}
+
+		@include breakpoint(575) {
+			transform: translate3d(0%, 95%, 0);
+		}	
+
+		@include breakpoint(425) {
+			transform: translate3d(0%, 75%, 0);
+		}		
+		
+		@include breakpoint(375) {
+			transform: translate3d(0%, 65%, 0);
+		}
+		
+		@include breakpoint(320) {
+			transform: translate3d(0%, 35%, 0);
+		}		
+			
+		.titulo {
+		font-size: 3.5rem;
+		@include titulo-paginas;
+		color: $roxo;
+		text-align: center;
+		width: 100%;
+
+			@include breakpoint(992) {
+				font-size: 5rem;
+			}	
+
+			@include breakpoint(767) {
+				text-align: center;
+				width: 100%;
+				margin-bottom: 30px;
+				font-size: 4rem;
+			}
+
+			span {
+			color: $roxo;
+			font-family: $bastia;
+			}
+		}
+
+	}
+
+	.conteudo-single-blog {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 0, 0);
+	@include conteudo-hero;
+	margin-top: 10%;
+	flex-direction: column;
+    align-items: flex-start;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 125%, 0);
+		}
+
+		@include breakpoint(575) {
+			transform: translate3d(0%, 95%, 0);
+		}	
+
+		@include breakpoint(425) {
+			transform: translate3d(0%, 75%, 0);
+		}		
+		
+		@include breakpoint(375) {
+			transform: translate3d(0%, 65%, 0);
+		}
+		
+		@include breakpoint(320) {
+			transform: translate3d(0%, 35%, 0);
+		}		
+			
+		.titulo {
+		@include titulo-paginas;
+		font-size: 4rem;
+		line-height: 110%;		
+		color: $preto;
+		text-align: left;
+		width: 80%;
+		margin-bottom: 25px;
+
+			@include breakpoint(992) {
+				font-size: 5rem;
+			}	
+
+			@include breakpoint(767) {
+				text-align: center;
+				width: 100%;
+				margin-bottom: 30px;
+				font-size: 4rem;
+			}
+
+			span {
+			color: $roxo;
+			font-family: $bastia;
+			}
+		}
+
+		.categorias {
+
+			a {
+			padding: 3px 10px;			
+			display: inline-block;
+			background: $opaco;
+			color: $branco;
+			text-transform: uppercase;
+			font-size: 10px;
+			letter-spacing: 1px;
+			font-weight: 500;
+			@include transition(all .3s ease);
+			
+				&:hover {
+					background: $roxo;
+				}
+			}			
+		}
+
+		.data {
+			font-family: $bastia;
+			margin-left: 20px;
+		}
+	}	
+	
+	.conteudo-orcamento {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 40%, 0);
+	@include conteudo-hero;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 75%, 0);
+		}
+
+		@include breakpoint(1280) {
+			transform: translate3d(0%, 10%, 0)
+		}
+
+		@include breakpoint(1280) {
+			transform: translate3d(0%, 25%, 0)
+		}	
+		
+		@include breakpoint(992) {
+			transform: translate3d(0%, 35%, 0)
+		}			
+
+		@include breakpoint(600) {
+			transform: translate3d(0%, 28%, 0)
+		}	
+
+		@include breakpoint(600) {
+			transform: translate3d(0%, 22%, 0)
+		}	
+		
+		@include breakpoint(425) {
+			transform: translate3d(0%, 25%, 0)
+		}
+		
+		@include breakpoint(320) {
+			transform: translate3d(0%, 20%, 0)
+		}		
+
+		.titulo {
+		font-size: 5.5rem;
+		@include titulo-paginas;				
+
+			@include breakpoint(1280) {
+				font-size: 5rem !important;
+			}
+
+			@include breakpoint(1200) {
+				margin: 0 auto 40px;
+				width: 85%;
+				text-align: center;
+			}
+
+			@include breakpoint(600) {
+				font-size: 4rem !important;
+			}
+
+			@include breakpoint(425) {
+				font-size: 3.4rem !important;
+			}	
+			
+			@include breakpoint(375) {
+				font-size: 3rem !important;
+			}				
+
+			@include breakpoint(320) {
+				font-size: 2rem !important;
+			}
+		
+		}	
+		
+		.descricao {
+		width: 35%;
+		color: $preto;
+		margin-top: 20px;
+		margin-bottom: 5px;
+		font-size: 17px;
+		line-height: 140%;
+
+		
+			@include breakpoint(1200) {
+				width: 45%;
+			}	
+
+			@include breakpoint(1200) {
+				margin: 0 auto;
+				width: 85%;
+				text-align: center;
+			}	
+
+			a {font-weight: 600; color: $preto}
+			a:hover {color: $roxo;}
+		}		
+	
+	}		
+
+	.conteudo-briefing {
+	width: 100%;
+	margin: 0 auto;
+	//padding-top: 10%;
+	transform: translate3d(0%, 20%, 0);
+	@include conteudo-hero;
+
+		@include breakpoint-min(1680) {
+			transform: translate3d(0%, 50%, 0);
+		}
+
+		@include breakpoint(1280) {
+			transform: translate3d(0%, 10%, 0)
+		}
+
+		@include breakpoint(1280) {
+			transform: translate3d(0%, 25%, 0)
+		}	
+		
+		@include breakpoint(992) {
+			transform: translate3d(0%, 35%, 0)
+		}			
+
+		@include breakpoint(800) {
+			transform: translate3d(0%, 18%, 0)
+		}	
+
+		@include breakpoint(767) {
+			transform: translate3d(0%, 22%, 0)
+		}	
+		
+		@include breakpoint(600) {
+			transform: translate3d(0%, 7%, 0)
+		}
+		
+		@include breakpoint(320) {
+			transform: translate3d(0%, 20%, 0)
+		}		
+
+		.titulo {
+		font-size: 5.8rem;
+		@include titulo-paginas;				
+
+			@include breakpoint(1200) {
+				margin: 0 auto 40px;
+				width: 85%;
+				text-align: center;
+			}
+
+			@include breakpoint(320) {
+				font-size: 2rem !important;
+			}
+		
+		}	
+		
+		.descricao {
+		width: 60%;
+		color: $preto;
+		margin-top: 20px;
+		margin-bottom: 5px;
+		font-size: 17px;
+		line-height: 140%;
+
+		
+			@include breakpoint(1200) {
+				width: 45%;
+			}	
+
+			@include breakpoint(1200) {
+				margin: 0 auto;
+				width: 85%;
+				text-align: center;
+			}	
+
+			a {font-weight: 600; color: $preto}
+			a:hover {color: $roxo;}
+		}		
+	
+	}		
+
+}
+
+
+
+
+
+// --------------------- BLOCO - VANTAGENS
+#vantagens {
+padding: 150px 0 195px;
+position: relative;
+
+	@include breakpoint(800) {
+		padding: 100px 0 125px;
+	}
+
+	@include breakpoint(575) {
+		padding: 50px 0 75px;
+	}		
+
+	.wrap-vantagens {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin-top: 135px;
+	width: 100%;
+
+		@include breakpoint(800) {
+			flex-direction: column;
+			align-items: center;
+			margin-top: 115px;
+		}
+
+		@include breakpoint(575) {
+			margin-top: 50px;
+		}	
+
+		.vantagem {
+		width: 29%;
+		padding: 0;
+		text-align: left;	
+
+			@include breakpoint(800) {
+				width: 100%;
+				margin-bottom: 50px;
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+
+			.subtitulo {
+			font-weight: 400;
+			text-transform: uppercase;
+			font-size: 15px;
+			color: $opaco;
+			letter-spacing: 3px;
+			opacity: 0.5;
+
+				@include breakpoint(375) {
+					text-align: center;
+					display: block;
+				}	
+			}
+
+			.wrap-icone-titulo {
+			display: flex;
+			align-items: flex-start;
+			margin: 25px 0 20px;
+
+				@include breakpoint(375) {
+					flex-direction: column;
+    				text-align: center;
+				}	
+
+				.icone {
+					max-height: 55px; 
+					width: auto;
+					margin-right: 15px;
+
+					@include breakpoint(375) {
+						margin-bottom: 20px;
+					}					
+				}
+
+				.h1-vantagens {
+					font-size: 22px;
+					line-height: 120%;
+					margin: 0 0 5px;
+					font-weight: 600;
+				}
+			}
+
+			.descricao {
+			font-size: 16px;
+			line-height: 150%;
+
+				@include breakpoint(375) {
+					text-align: center;
+				}	
+			}
+		}
+	}
+}
+
+// --------------------- BLOCO - DEPOIMENTOS
+#depoimentos {
+padding: 190px 0 90px;
+position: relative;
+
+	@include breakpoint(600) {
+		padding: 135px 0 0;
+	}
+
+	@include breakpoint(575) {
+		padding: 95px 0 40px;
+	}	
+
+	&::before {
+		content: "";
+		background: $roxo;
+		width: 100%;
+		height: 30%;
+		position: absolute;
+		bottom: 0;	
+		z-index: -1;	
+		
+		@include breakpoint(992) {
+			bottom: 25%;
+		}
+	}
+
+	.wrap-depoimentos {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	margin-top: 160px;
+
+		@include breakpoint(600) {
+			margin-top: 100px;
+		}
+
+		@include breakpoint(575) {
+			margin-top: 50px;
+		}			
+	}
+
+	.depoimento {
+	position: relative;
+	z-index: 99;
+	width: 31%;
+	margin: 0 auto;
+	padding: 50px 20px 45px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border: 1px solid $opaco;
+	background: $branco;
+	@include transition(all .3s ease);
+
+		@include breakpoint(992) {
+			width: 45%;
+			margin: 0 auto 40px;
+
+			&:last-child {
+				width: 95%;
+			}
+		}
+
+		@include breakpoint(575) {
+			width: 95%;
+		}		
+		
+		.descricao {
+			width: 85%;
+			font-size: 15px;
+			font-weight: 400;
+			color: $preto;
+			text-align: center;
+
+			strong {
+				color: $preto; 
+			}
+		}
+
+		.autor {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 10px;
+
+			.wrap-foto {
+				height: 85px;
+				width: 85px;				
+				border: 1px solid $opaco;
+				padding: 7px;
+				margin-bottom: 20px;
+				@include border-radius(70px);
+			}
+
+			.foto {
+			height: 100%;
+			width: 100%;
+			overflow: hidden;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: relative;
+			@include border-radius(70px);
+			}
+
+			.nome {
+				font-weight: 700;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				font-size: 13px;
+				color: $roxo;
+				text-align: center;
+			}
+		}
+	}
+}
+
+// --------------------- BLOCO - PROJETOS RELACIONADOS
+.projetos-relacionados {
+	padding-top: 60px !important;
+
+	@include breakpoint(992) {
+		.wrap-projetos .projeto-individual:last-child {display: none;}
+	}
+
+	@include breakpoint(575) {
+		.wrap-projetos .projeto-individual:last-child {display: block;}
+	}	
+}
+
+// --------------------- BLOCO - PROJETOS
+.projetos {
+width: 100%;
+text-align: center;
+
+	.wrap-projetos {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 97px 0 160px;
+
+		@include breakpoint(800) {
+			margin: 25px 0 0px;
+		}
+
+		.projeto-individual {
+		width: 31.5%;
+		margin-bottom: 35px;
+
+			@include breakpoint(992) {
+				width: 48%;
+				margin-bottom: 30px;
+			}
+
+			@include breakpoint(575) {
+				width: 100%;
+				margin: 0 auto 30px;
+			}			
+
+			a {
+				display: block;
+				color: $preto;
+			}
+
+			.img-post {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 0;
+			width: 100%;
+			padding-bottom: 117%;
+			overflow: hidden;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: relative;
+			@include transition(all .3s ease);
+
+				.titulo-categ {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				position: absolute;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				top: 0;
+				padding: 20px 45px;
+				opacity: 0;
+				background-color:rgba(189,173,175,0.85);
+				text-align: center;
+				@include transition(all .3s ease);
+
+					.titulo-post {
+						color: $branco;
+						font-family: $bastia;
+						font-size: 28px;
+						line-height: 120%;
+						letter-spacing: 1px;
+						text-align: center;
+					}
+				}
+
+				.categ {text-transform: lowercase; color: $branco;}
+
+				&:hover > .titulo-categ {opacity: 1;}
+			}
+		}
+	}
+
+	.misha_loadmore {
+	display: block;
+	width: 25%;
+	margin: 40px auto;
+	padding: 20px 25px;
+	border: 2px solid $roxo;
+	background: none;
+	color: $roxo;
+	font-size: 17px;
+	text-transform: uppercase;
+	cursor: pointer;
+	@include border-radius(50px);
+	@include transition(all .3s ease);
+
+		&:hover {
+			border-color: $roxo;
+			width: 28%;
+		}
+	}
+
+
+	.ver-mais-projetos {
+	width: 29%;
+	padding: 28px;
+	border: 3px solid $roxo;
+	background: none;
+	cursor: pointer;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 15px;
+	color: $roxo;
+	
+		@include breakpoint(992) {
+			width: 50%;
+		}
+
+		@include breakpoint(575) {
+			width: 70%;
+		}	
+		
+		@include breakpoint(425) {
+			width: 90%;
+		}	
+		
+		@include breakpoint(375) {
+			padding: 20px 17px;
+			font-size: 13px;
+		}	
+
+		&:hover {
+			.fas {
+				-webkit-transform: translate(5px, 0);
+				transform: translate(5px, 0);
+			}
+		}
+
+		&:active, &:focus {outline: none;}
+
+		.fas {margin-left: 5px; @include transition(all .3s ease);}
+	}
+
+	.load-over {
+		display: block;
+		width: 25%;
+		margin: 40px auto;
+		padding: 20px 25px;
+		border: 2px solid $opaco_claro;
+		color: $opaco_claro;
+		text-transform: uppercase;
+		cursor: inherit;
+		@include border-radius(50px);
+	}
+}
+
+// --------------------- BLOCO - CTA
+.cta {
+padding: 145px 0 150px;
+margin-top: 200px;
+background: $roxo;
+color: $branco;
+font-size: 17px;
+text-align: center;
+
+	@include breakpoint(800) {
+		padding: 95px 0 100px;
+
+		p {
+			width: 70%;
+			margin: 0 auto;
+		}
+	}
+
+	@include breakpoint(575) {
+		p {
+			width: 85%;
+		}
+	}
+
+	.titulo {
+	color: $branco;
+	margin-bottom: 40px;
+	}
+
+	.botao-cta {
+	display: inline-block;
+	padding: 28px 38px;
+	margin-top: 55px;
+	background: $branco;
+	letter-spacing: 1px;
+	color: $roxo;
+	font-size: 17px;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	@include transition(all .3s ease);
+
+		@include breakpoint(375) {
+			padding: 20px 40px;
+			font-size: 13px;
+		}	
+
+		&:hover {
+			transform: scale(1.05);
+		}
+	}	
+}
+
+// --------------------- BLOCO - FAQ
+.faq {
+font-size: 17px;
+line-height: 32px;
+letter-spacing: 0.5px;
+padding: 145px 0 120px;
+
+	@include breakpoint(800) {
+		padding: 0 0 60px;
+	}
+
+	.container-faq {
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	margin-top: 70px;
+
+		@include breakpoint(800) {
+			margin-top: 40px;	
+		}
+	}
+
+	.h1-faq {
+	line-height: 140%;
+	font-family: $bastia;
+	color: $preto;
+	font-size: 55px;
+	text-align: center;
+
+		@include breakpoint(800) {
+			font-size: 33px;
+		}
+	}	
+
+	.wrap-pergunta-resposta {
+	width: 31%;
+
+		@include breakpoint(992) {
+		width: 48%;
+
+			&:last-child {
+			width: 100%;
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			
+				.faq-individual {
+				width: 48%;
+				}
+			}
+		}
+
+		@include breakpoint(575) {
+		width: 100%;
+
+			&:last-child .faq-individual {
+				width: 100%;
+			}			
+		}
+
+		.faq-individual {
+		font-size: 14px;
+
+			.btn-faq {
+			width: 100%;
+			background: $branco;
+			color: $roxo;
+			text-align: left;
+			font-size: 15px;
+			font-weight: 500;
+			letter-spacing: 0;
+			padding: 20px 30px;
+			white-space: normal;
+			border-bottom: 2px solid #DED6D7;
+			@include border-radius(0px);
+
+				&:focus {-webkit-box-shadow: none;box-shadow: none}
+
+				@include breakpoint(992) {
+					min-height: 83px;
+				}
+
+				@include breakpoint(575) {
+					min-height: auto;
+				}				
+			}	
+
+			.btn-faq.collapsed {
+				color: $preto;
+			}
+
+			.marked {
+				background: #FBF8F8;
+
+				@include breakpoint(992) {
+					background: none;
+				}
+			}
+
+			p {
+				display: block;
+				text-align: left;
+				line-height: 23px;
+				padding: 20px 30px;
+				border-bottom: 2px solid #DED6D7;
+			}				
+
+			.fas {margin-right: 8px; font-size: 12px;}
+			
+			.btn-faq[aria-expanded="true"] > .fas {
+				-webkit-transform: rotate(45deg);
+						transform: rotate(45deg); 
+			}
+		}
+	}
+
+}
+
+// --------------------- BLOCO - OUTLINE BUTTON
+.bg-line {
+border-top: 5px solid #F5F3F3;
+position: relative;	
+
+	.wrap-botao-outline {
+	width: 30%;
+	margin: 0 auto;
+	position: absolute;
+	bottom: -13px;
+	left: 0;
+	right: 0;	
+	background: $branco;	
+	z-index: 99;
+	text-align: center;
+
+		@include breakpoint-min(1920) {
+			width: 25%;
+		}	
+
+		@include breakpoint(1280) {
+			width: 35%;
+		}
+
+		@include breakpoint(992) {
+			width: 50%;
+		}		
+
+		@include breakpoint(767) {
+			width: 60%;
+		}
+		
+		@include breakpoint(575) {
+			width: 75%;
+		}	
+		
+		@include breakpoint(425) {
+			width: 85%;
+		}			
+
+		.botao-outline {
+		padding: 28px 55px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		color: $roxo;
+		background: none;
+		border: 3px solid $roxo;
+
+			@include breakpoint(1024) {
+				padding: 23px 30px;
+			}
+
+			@include breakpoint(375) {
+				padding: 20px 17px;
+				font-size: 13px;
+			}			
+
+			&:hover {
+				.fas {
+					-webkit-transform: translate(5px, 0);
+					transform: translate(5px, 0);
+				}
+			}
+
+			&:active, &:focus {outline: none;}
+
+			.fas {margin-left: 5px; @include transition(all .3s ease);}			
+		}
+	}
+}
+
+// --------------------- BLOCO - PROCESSO DE CRIAÇÃO
+.processo {
+margin-top: -40px;
+padding: 0 0 140px;
+
+	@include breakpoint(800) {
+		padding: 0 0 8px;
+	}
+
+	.wrap-processo {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding-top: 160px;
+	border-top: 5px solid $opaco_claro;
+
+		@include breakpoint(800) {
+			flex-direction: column;
+			padding-top: 100px;
+		}
+
+		@include breakpoint(575) {
+			padding-top: 50px;
+		}			
+
+		.h1-processo {
+		width: 24%;
+		line-height: 130%;
+		font-family: $bastia;
+		color: $opaco;
+		font-size: 25px;
+
+			@include breakpoint(800) {
+				width: 95%;
+				text-align: center;
+				margin: 0 auto;
+				font-size: 18px;
+			}
+
+			p {
+				margin-bottom: 15px;
+			}
+	
+			h1 {
+			font-size: 42px;
+			line-height: 130%;
+			color: $preto;
+			margin-top: -5px;
+				
+				@include breakpoint(800) {
+					font-size: 33px;
+				}
+			}			
+		}
+
+		.itens-processo {
+		width: 65%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+
+			@include breakpoint(800) {
+				margin: 40px auto 0;
+				width: 100%;
+			}
+
+			.item {
+			width: 45%;
+			margin-bottom: 40px;
+			line-height: 130%;
+
+				&:nth-of-type(1) {order: 1}
+				&:nth-of-type(2) {order: 3}
+				&:nth-of-type(3) {order: 5}
+				&:nth-of-type(4) {order: 2}
+				&:nth-of-type(5) {order: 4}
+
+				@include breakpoint(800) {
+					&:nth-of-type(1) {order: 1}
+					&:nth-of-type(2) {order: 2}
+					&:nth-of-type(3) {order: 3}
+					&:nth-of-type(4) {order: 4}
+					&:nth-of-type(5) {order: 5}
+				}
+
+				@include breakpoint(425) {
+					width: 100%;
+				}				
+
+				h2 {
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+// --------------------- PÁGINA - HOME
+#pagina-home {
+	.sobre {
+	position: relative;
+	margin: 160px 0;
+
+		@include breakpoint(600) {
+			margin: 90px 0;
+		}
+
+		.wrap-sobre {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+
+			&::before {
+			content: "";
+			background: $opaco_claro;
+			width: 100%;
+			height: 80%;
+			position: absolute;
+			top: 10%;	
+			z-index: -1;	
+				
+				@include breakpoint(992) {
+					top: 18%;
+					height: 73%;
+				}
+				
+				@include breakpoint(575) {
+					top: 15%;
+				}			
+			}
+
+			@include breakpoint(1024) {
+				.texto .titulo {
+					width: 100%;
+				}
+
+				&:before {
+					height: 89%;
+					top: 5%;
+				}
+			}			
+
+			@include breakpoint(992) {
+				flex-direction: column;
+				text-align: center;
+				padding: 0px 0 140px;
+			}	
+
+			.img-sobre {
+			width: 40%;
+			border: 2px solid $opaco;
+			padding: 12px;
+			@include border-radius(100%);
+
+				@include breakpoint(992) {
+					width: 60%;
+				}	
+
+				.img-inner {
+					width: 100%;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center top;
+					padding-bottom: 100%;
+					@include border-radius(100%);
+				}
+			}	
+			
+			.texto {
+			width: 55%;
+
+				@include breakpoint(992) {
+					width: 95%;
+				}	
+
+				@include breakpoint(600) {
+					.titulo {padding: 10px 0;}
+				}			
+
+				.texto-inside {
+					line-height: 150%;
+				}
+
+				.saiba-mais {
+				margin-top: 20px;
+				display: inline-block;
+				text-transform: uppercase;
+				color: $opaco;
+				font-weight: 700;
+				letter-spacing: 1px;
+				border-bottom: 2px solid $opaco_claro;
+				@include transition(color .3s ease);
+
+					&:hover {color: $roxo; border-bottom: 2px solid $roxo;}
+				}
+				
+			}
+		}
+
+	}
+
+	@include breakpoint(600) {
+		.projetos {margin-bottom: 90px;}
+	}
+}
+
+// --------------------- PÁGINA - SERVIÇOS
+#pagina-servicos {
+	.copy {
+	padding: 150px 0;
+
+		@include breakpoint(800) {
+			padding: 90px 0;
+		}
+
+		@include breakpoint(575) {
+			padding: 50px 0;
+		}		
+
+		.h1-copy {
+		font-size: 50px;
+		line-height: 120%;
+		font-family: $bastia;
+		color: $preto;
+
+			@include breakpoint(800) {
+				font-size: 33px;
+			}
+
+			@include breakpoint(767) {
+				text-align: center;
+			}
+		}
+
+		.wrap-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin: 90px 0;
+
+			@include breakpoint(767) {
+				justify-content: space-around;
+			}
+
+			@include breakpoint(575) {
+				margin: 50px 0;
+			}				
+
+			.item {
+			width: 27%;
+			margin-bottom: 30px;
+
+				@include breakpoint(767) {
+					width: 48%;
+
+					&:nth-child(odd){
+						font-weight: 400 !important;
+					}
+
+					&:last-child {display: none;}
+				}
+
+				@include breakpoint(425) {
+					width: 100%;
+					padding: 0;
+				}
+
+				&:nth-child(odd){
+					font-weight: 600;
+				}
+
+				.fas {margin-right: 5px}
+			}
+		}
+
+
+		.wrap-texto-imagem {
+		display: flex;
+		justify-content: space-between;
+
+			.texto-two {
+			width: 47%;
+			line-height: 150%;
+
+				@include breakpoint(1024) {
+					width: 100%;
+				}
+
+				@include breakpoint(767) {
+					margin: 0 auto;
+					width: 100%;
+				}
+
+				strong {
+					color: $preto;
+					font-weight: 600;
+				}
+
+				.span-copy {
+				display: inline-block;
+				margin-bottom: 50px;
+				font-size: 50px;
+				line-height: 130%;
+				font-family: $bastia;
+				color: $preto;
+
+
+					@include breakpoint(1280) {
+						font-size: 45px;
+						margin-bottom: 30px;
+					}
+
+					@include breakpoint(800) {
+						font-size: 33px;
+					}
+
+					@include breakpoint(767) {
+						text-align: center;
+					}
+
+					strong {color: $roxo;}
+				}		
+			}
+
+			.img-ilustrativa{
+			width: 50%;
+			margin-right: -50px;
+
+				@include breakpoint(1024) {
+					display: none;
+				}
+
+				img {width: 100%; height: auto;}
+			}
+		}
+
+
+
+	}
+
+	.o-que-esta-incluso {
+	background: $roxo;
+	color: $branco;
+	padding: 140px 0 160px;
+
+		@include breakpoint(800) {
+			padding: 80px 0 100px;
+		}
+
+		.h1-oq {
+		line-height: 140%;
+		font-family: $bastia;
+		color: $branco;
+		font-size: 25px;
+		text-align: center;
+
+			@include breakpoint(800) {
+				font-size: 18px;
+			}
+
+			h1 {
+			font-size: 43px;
+
+				@include breakpoint(800) {
+					font-size: 33px;
+					line-height: 125%;
+				}
+			}
+		}
+
+		.wrap-items {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-around;
+		margin: 90px auto;
+		width: 70%;
+
+			@include breakpoint(767) {
+				width: 90%;
+			}		
+
+			@include breakpoint(575) {
+				width: 95%;
+				margin: 60px auto;
+			}	
+
+			.item {
+			width: 45%;
+			padding-bottom: 20px;
+			margin-bottom: 20px;
+			text-align: center;
+			border-bottom: 4px solid #AD82D1;
+
+				@include breakpoint(575) {
+					text-align: left;
+				}	
+
+				@include breakpoint(375) {
+					width: 100%;
+				}				
+
+				.fas {margin-right: 5px}
+
+				&:last-child {
+					text-transform: uppercase;
+					font-weight: 600;
+					font-size: 13px;
+					letter-spacing: 1px;
+				}
+			}
+		}	
+
+		.btn-oq {
+		display: block;
+		padding: 23px 38px;
+		margin: 0 auto;
+		background: $branco;
+		color: $roxo;
+		font-size: 17px;
+		letter-spacing: 1px;
+		text-transform: uppercase;
+		font-weight: 700;
+		border: none;
+		outline: none;
+		cursor: pointer;
+
+			&:hover {
+				transform: scale(1.05);
+			}
+		}	
+
+	}
+
+	.veja_mais_servicos {
+	padding: 160px 0;
+	margin-bottom: -40px;
+	background: $opaco_claro;
+
+		@include breakpoint(800) {
+			padding: 100px 0;
+		}
+
+		@include breakpoint(575) {
+			padding: 50px 0;
+		}			
+
+		.wrap-servicos {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-top: 70px;
+
+			@include breakpoint(575) {
+				margin-top: 50px;
+			}	
+
+			.item {
+			width: 47%;
+			background: #FBF8F8;
+
+				@include breakpoint(992) {
+					width: 100%;
+
+					&:first-child {margin-bottom: 50px;}
+				}
+
+				.img-servico {
+					width: 100%;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: center top;
+					padding-bottom: 50%;
+				}
+
+				.conteudo-item {
+				padding: 50px;
+				text-align: center;
+
+					@include breakpoint(800) {
+						padding: 30px;
+					}
+
+					.h2-item {
+						line-height: 140%;
+						font-weight: 600;
+						letter-spacing: 2px;
+						text-transform: uppercase;
+						color: $preto;
+						font-size: 20px;
+						text-align: center;
+						
+					}
+
+					p {
+						margin: 20px 0;
+					}
+
+					strong {color: $preto}
+
+					a {
+						font-weight: 700;
+						text-decoration: underline;
+
+						&:hover {
+							text-decoration: underline !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// --------------------- PÁGINA - SOBRE
+#pagina-sobre {
+	.wrap-sobre {
+	display: flex;
+	flex-direction: row-reverse;
+	justify-content: space-between;
+	align-items: center;
+	padding: 160px 0 150px;
+
+		@include breakpoint(575) {
+			padding: 50px 0 70px;
+			flex-direction: column;
+		}	
+		
+		.wrap-imgs {
+		width: 30%;
+
+			@include breakpoint(1200) {
+				width: 38%;
+			}	
+			
+			@include breakpoint(992) {
+				display: none;
+			}		
+			
+			@include breakpoint(575) {
+				display: block;
+				width: 100%;
+			}				
+
+			.img-sobre {
+			width: 100%;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center top;
+			padding-bottom: 130%;
+
+				&:nth-of-type(1) {
+				transform: rotate(3deg);
+				margin-bottom: 60px;
+
+					@include breakpoint(575) {
+						transform: rotate(0deg);
+						padding-bottom: 100%;
+						background-position: center center;
+						margin-bottom: 40px;
+					}					
+				}
+
+				&:nth-of-type(2) {
+					transform: rotate(-3deg);
+
+					@include breakpoint(575) {
+						display: none;
+					}						
+				}				
+					
+				@include breakpoint(1280) {
+					padding-bottom: 160%;
+				}
+
+				@include breakpoint(1200) {
+					padding-bottom: 170%;
+				}					
+	
+			}			
+		}
+
+		.texto-sobre {
+		width: 57%;
+		line-height: 160%;
+
+			@include breakpoint(992) {
+				width: 100%;
+			}
+
+			h2 {
+				margin-bottom: 25px;
+				font-family: $bastia;
+				color: $preto;
+				font-size: 45px;
+				line-height: 120%;
+
+				@include breakpoint(992) {
+					font-size: 33px;
+				}
+			}
+
+			p {margin-bottom: 25px;}
+
+			strong {
+				color: $preto;
+				font-weight: 600;
+			}
+
+			a {
+				text-decoration: underline;
+
+				&:hover {
+					text-decoration: underline !important;
+				}
+			}
+
+			blockquote {
+				border-left: 5px solid $preto;
+				font-family: $bastia;
+				font-size: 30px;
+				line-height: 130%;
+				color: $preto;
+				font-style: normal;
+			}
+		}
+	}
+
+	.conteudo-sobre {
+	width: 62%;
+	padding: 60px 0;
+
+		strong {color: $preto}
+
+		h2 {
+			margin-top: 40px;
+			margin-bottom: 10px;
+			font-family: $montserrat;
+			font-size: 23px;
+			line-height: 35px;
+			text-align: left;
+		}
+	}
+
+	.processo .wrap-processo {
+		padding-bottom: 116px;
+		border-bottom: 5px solid $opaco_claro;
+
+		@include breakpoint(575) {
+			padding-bottom: 10px;
+		}	
+	}
+
+	.projetos-relacionados {
+		padding-top: 8px !important;
+
+		@include breakpoint(800) {
+			padding: 120px 0 0 !important;
+		}
+
+		@include breakpoint(575) {
+			padding: 50px 0 0 !important;
+		}			
+
+	}
+
+	@include breakpoint(575) {
+		.projetos .ver-mais-projetos {
+			width: 70%;
+			margin-top: 20px;
+		}
+
+		.cta {
+			margin-top: 50px;
+		}		
+	}
+
+
+}
+
+// --------------------- PÁGINA - PROJETOS
+#pagina-projetos {
+	.projetos .wrap-projetos {
+		margin: 160px 0 125px;
+
+		@include breakpoint(575) {
+			margin: 50px 0 0;
+		}	
+	}
+
+	.cta {
+		margin-top: 125px;
+
+		@include breakpoint(575) {
+			margin-top: 25px;
+		}			
+	}
+}
+
+// --------------------- PÁGINA - ORÇAMENTO
+#pagina-orcamento {
+	.faq-orcamento {
+		padding: 80px 0 120px;	
+	}
+
+	.wrap-form-orcamento {
+		width: 100%;
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	#form_5d40fd243a05e {
+	margin-right: 9.5%;
+	margin-top: -80vh;
+	padding: 25px 40px 40px;
+	width: 43%;
+	z-index: 999;
+	background: #F9f9f9;
+	
+		@include breakpoint(1200) {
+			position: relative;
+			right: auto;
+			top: auto;
+			width: 80%;
+			margin: 60px auto 0;
+		}
+	
+		@include breakpoint(767) {
+			width: 95%;
+		}	
+	
+		.wrap-input {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	
+			@include breakpoint(575) {
+				flex-direction: column;
+			}
+	
+			.half-input {
+			width: 48%;
+	
+				@include breakpoint(575) {
+					width: 100%;
+				}
+			}
+		}
+	
+		.acf-fields>.acf-field {
+			border: none;
+			padding: 15px 0px;
+		}
+	
+		label {
+		font-size: 16px;
+		font-weight: 500;
+		margin: 0 !important;
+		text-align: left;
+		color: $preto;
+	
+			.acf-required {
+				color: $preto;
+			}
+		}
+	
+		input {
+		padding: 15px 0 !important;
+		height: 45px !important;
+		color: $preto;
+		font-size: 15px !important;
+		border: none;
+		border-bottom: 1px solid $preto;
+		background: transparent;
+		@include border-radius(0);
+	
+			&::-webkit-input-placeholder {color: $preto; opacity: 0.6;}
+	
+			&:focus {
+				outline: none;
+			}
+		}
+	
+		textarea {
+			padding: 15px !important;
+			height: 130px !important;
+			color: $preto;
+			font-size: 15px !important;
+			border: 1px solid $preto;
+			background: transparent;
+	
+			&::-webkit-input-placeholder {color: $preto; opacity: 0.6;}
+	
+			&:focus {
+				outline: none;
+			}		
+		}
+	
+		.af-field-instructions {
+			font-size: 13px;
+			line-height: 18px;
+			color: #515151;
+			margin-top: 8px;
+		}
+	
+		.af-field-type-radio {
+			padding: 15px 0 !important;
+			margin: 0;
+		}
+	
+		.af-submit {
+			clear: both;
+			padding: 15px 0;
+			text-align: center;
+		}
+	
+		.acf-radio-list, .acf-checkbox-list {
+		display: flex;
+		flex-wrap: wrap;
+	
+			@include breakpoint(575) {
+				flex-direction: column;
+			}
+	
+			li {
+			width: 50%;			
+			text-align: left;
+	
+				@include breakpoint(575) {
+					width: 100%;
+				}
+	
+				label {
+				font-size: 15px;
+				font-weight: 400;
+				cursor: pointer;
+				}
+	
+				input {
+				height: 26px !important;
+				margin-right: 10px !important;
+	
+					&::before {
+						content: "";
+						background: $branco;
+						border: 2px solid $opaco;
+						width: 14px;
+						height: 14px;
+						position: absolute;
+						top: 5px;
+					}
+				}
+	
+				input.acf-checkbox-custom {
+					&::before {
+						top: 11px;
+						background: $opaco;
+						border: 2px solid $opaco;
+					}
+				}
+	
+				label.selected input::before, label:hover > input::before {
+					background: $opaco;
+					border: 2px solid $opaco;
+				}
+			}
+		}
+	
+		.acf-radio-list li input:before {@include border-radius(30px);}
+	
+		.af-submit-button {
+			width: 100%;
+			height: 50px !important;
+			color: $branco;
+			text-transform: uppercase;
+			font-weight: 600;
+			font-size: 15px;
+			letter-spacing: 1px;
+			background: $opaco;
+			border: none;
+			cursor: pointer;
+	
+			&:hover {
+				background: $roxo;
+			}
+		}
+	
+		.af-success {
+		padding: 90px 0;
+	
+			h2 {
+				color: $roxo;
+				font-family: $bastia;
+				font-size: 35px;
+				line-height: 120%;
+				margin: 15px 0;
+			}
+	
+			a {
+			color: $roxo;
+	
+				&:hover {color: $roxo}
+			}
+		}
+		
+	}
+}
+
+// --------------------- PÁGINA - BRIEFING
+.page-briefing {
+margin-top: 140px;
+margin-bottom: 140px;
+
+	@include breakpoint(575) {
+		margin-top: 50px;
+		margin-bottom: 50px;	
+	}
+
+	.af-page-wrap {
+		border: 1px solid #eee;
+		display: flex;
+		margin: 0 12px 30px;
+
+		@include breakpoint(600) {
+			flex-direction: column;
+		}
+	}
+
+	.af-field-type-page {
+		display: none !important;
+	}
+
+	.af-success {
+		h2 {
+			font-family: $bastia;
+			color: $roxo;
+			font-size: 40px;
+			margin-bottom: 40px;
+		}
+	}
+
+	.acf-form {
+
+		.acf-fields>.acf-field {
+			width: 46%;
+			display: inline-block;
+			margin: 0 2%;
+
+			@include breakpoint(600) {
+				width: 100%;
+				margin: 0;
+			}
+		}
+
+		.af-next-button, .af-previous-button {
+		margin-right: 10px;
+		padding: 10px 15px;
+		background: $roxo;
+		border: none;
+		color: $branco;
+		cursor: pointer;
+		@include transition(all .3s ease);
+
+			&:hover {background: $roxo;}
+			&:disabled {background-color: $opaco_claro; color: $preto;}
+		}
+
+		.campo-full {
+			width: 96% !important;
+
+			@include breakpoint(767) {
+				width: 100%;
+			}
+		}
+
+		.acf-input input {
+			border: none;
+			padding: 0;
+
+			&:focus, &:active {
+				outline: none;
+			}
+		}
+
+		.af-submit {
+			clear: both;
+			padding: 15px 0;
+			text-align: center;
+		}
+
+		.af-submit-button {
+			margin-top: 25px;
+		}
+
+		.af-submit-button {
+			width: 96%;
+			background: $roxo;
+			border: none;
+			padding: 20px;
+			color: $branco;
+			font-weight: 700;
+			text-transform: uppercase;
+			letter-spacing: 2px;
+		}
+
+		.acf-add-checkbox {
+		background: $opaco;
+		border: none;
+		padding: 5px 10px;
+		margin-top: 9px;
+		display: inline-block;
+		color: $branco;
+		}
+	}
+
+
+	.af-page-button.current {
+		color: $branco;
+		background: $roxo;
+	}
+
+	.af-page-button.enabled {
+		background: $roxo;
+		color: $branco;
+
+		&::after {
+			border-left-color: $roxo;
+		}
+	}
+
+	.af-page-button .index {
+		background: $roxo;
+		color: $branco
+	}
+
+
+}
+
+// --------------------- PÁGINA - SINGLE PROJETO
+.conteudo-single {
+width: 75%;
+margin: 160px auto;
+
+	@include breakpoint(992) {
+		margin: 100px auto;
+		width: 90%;
+	}
+
+	@include breakpoint(800) {
+		margin: 100px auto;
+		width: 98%;
+	}
+
+	img {width: 100%; height: auto;}
+
+	.item-single-projetos {
+	margin-bottom: 40px;
+
+		.h2-single-projetos {
+		position: relative;
+		margin-bottom: 25px;
+		font-size: 31px;
+		line-height: 58px;
+		font-family: $bastia;
+		color: $preto;
+		text-align: center;
+
+			&::before {
+				content: "";
+				background: $preto;
+				width: 33%;
+				height: 2px;
+				position: absolute;
+				top: 50%;
+				left: 0;
+			}
+
+			&::after {
+				content: "";
+				background: $preto;
+				width: 33%;
+				height: 2px;
+				position: absolute;
+				top: 50%;
+				right: 0;
+			}
+		}
+	}
+}
+
+
+
+
+
+// --------------------- BLOG - LISTAGEM
+#pagina-blog {
+
+	.lista-posts {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: -250px 0 90px;
+
+		.post-individual {
+		width: 31.5%;
+		margin-bottom: 35px;
+
+			@include breakpoint(992) {
+				width: 48%;
+				margin-bottom: 30px;
+			}
+
+			@include breakpoint(575) {
+				width: 100%;
+				margin: 0 auto 30px;
+			}			
+
+			a {
+				display: block;
+				color: $preto;
+			}
+
+			.img-post {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			height: 0;
+			width: 100%;
+			padding-bottom: 150%;
+			overflow: hidden;
+			background-size: cover;
+			background-repeat: no-repeat;
+			background-position: center center;
+			position: relative;
+			@include transition(all .3s ease);
+
+
+				.categ {text-transform: lowercase; color: $branco;}
+
+				&:hover > .titulo-categ {opacity: 1;}
+			}
+
+			.texto {
+				display: none;
+			}
+		}
+	}
+
+}
+
+// --------------------- BLOG - SINGLE E SIDEBAR
+.wrap-single-sidebar {
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+margin-top: -190px;
+
+	.post-single {
+	position: relative;
+	width: 70%;
+	padding: 45px;
+	font-size: 18px;
+	line-height: 160%;
+	background: $branco;
+
+		p {margin-bottom: 35px;}
+
+		ul, ol {
+			padding: 0;
+			margin-bottom: 30px;
+
+			li {
+				list-style-image: url('img/ul-dot.svg');
+				list-style-position: inside;
+				line-height: 27px;
+				padding-bottom: 10px;				
+			}
+		}
+		
+		img {width: 100%; height: auto; margin-bottom: 20px;}
+
+		h2 {
+			font-family: $bastia;
+			font-size: 35px;
+			color: $roxo;
+			margin-bottom: 30px;
+			line-height: 130%;
+		}
+
+		h3 {
+			font-family: $bastia;
+			font-size: 25px;
+			color: $preto;
+			margin-bottom: 30px;
+			line-height: 130%;
+		}		
+
+		a {
+			text-decoration: underline;
+
+			&:hover {
+				color: $roxo;
+				text-decoration: underline !important;
+			}
+		}
+
+		/** final post **/
+		.final-post {
+		border-top: 1px solid $opaco;
+		border-bottom: 1px solid $opaco;
+		width: 100%; 
+		padding: 60px 0 70px;
+		margin-top: 35px;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+
+			.tags {
+			width: 100%;
+			padding-top: 20px;
+			color: $branco;
+			text-align: center;
+			
+				span {
+					font-size: 13px;
+					text-transform: uppercase;
+				}
+
+				a {
+				padding: 10px;
+				color: $branco;
+				background: $opaco;
+				text-decoration: none;
+				font-size: 10px;
+				letter-spacing: 1px;
+				font-weight: 600;
+				text-transform: uppercase;
+
+					&:hover {text-decoration: underline !important}
+				}
+			}	
+
+			.share-icons {
+			padding-top: 5px;
+			text-align: center;
+			width: 100%;
+			
+				.compartilhe {
+				color: $preto;
+				font-size: 25px;
+				font-family: $bastia;
+				}
+
+				.wrap-icons {
+				display: flex;
+				justify-content: center;
+				margin-top: 30px;
+				margin-bottom: 10px;
+
+					a {
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					background: $roxo;
+					width: 35px;
+					height: 35px;
+					margin: 0 10px;
+					color: $branco;
+					text-decoration: none;
+					font-size: 14px;
+					@include border-radius(50px);
+					@include transition(all .3s ease);
+		
+						&:hover {background: $preto; text-decoration: none !important;}
+					}				
+				}
+			}		
+		}
+
+		.wrap-posts-relacionados {
+		width: 100%;
+		margin: 60px auto;
+
+			@include breakpoint(1024) {
+				width: 100%;
+			}	
+
+			.h2-continue-lendo {
+				margin-bottom: 50px;
+				color: $preto;	
+				font-family: $bastia;	
+				font-size: 25px;
+				text-align: center;		
+			}
+
+			ul {
+			padding: 0;
+			display: flex;
+			justify-content: space-between;
+			flex-wrap: wrap;
+
+				.post-individual {
+				width: 31%;
+				text-align: center;
+				padding-bottom: 20px;
+				list-style: none;
+
+					@include breakpoint(767) {
+						width: 100%;
+						margin-bottom: 30px;
+					}
+
+					.img-post {
+						display: flex;
+						align-items: center;
+						justify-content: center;					
+						height: 0;
+						width: 100%;
+						padding-bottom: 150%;
+						overflow: hidden;
+						background-size: cover;
+						background-repeat: no-repeat;
+						background-position: center center;
+						position: relative;	
+						@include transition(all .3s ease);
+					}	
+
+					.categ {
+					display: inline-block;
+					margin: 3px auto 0;
+					padding: 4px 10px 2px;
+					z-index: 9;
+					position: relative;			
+					text-align: center;			
+					background: $roxo;
+					color: $branco;
+					letter-spacing: 0.5px;		
+					font-size: 13px;
+					display: none;
+					@include transition(all .3s ease);
+			
+						a {color: $branco;}
+					}
+					
+					.titulo-post {	
+						padding: 0 15px;
+						margin: 12px 0;		
+						font-size: 15px;
+						font-weight: 600;
+						color: $roxo;
+						text-align: center;
+						display: none;
+						@include transition(all .3s ease);
+					}
+			
+					.descricao {
+						padding: 0 15px;
+						color: $preto;
+						text-align: left;
+						width: 100%;
+						font-size: 13px;
+						display: none;
+					}
+					
+					&:hover .img-post {opacity: 0.8;}
+					&:hover .titulo-post {color: $roxo}
+					&:hover .categ {background: $roxo}
+				}
+			}   	
+		}	
+		
+		.comentarios {
+		width: 68%;
+		margin: 0 auto 50px;
+
+			@include breakpoint(1024) {
+				width: 100%;
+			}	
+
+			.h2-comentarios {
+				margin-bottom: 20px;
+				color: $roxo;		
+				font-size: 30px;
+				text-align: center;		
+			}
+
+			.box-comentario {
+				background: $roxo;
+				padding: 30px;
+			}
+		}	
+	}
+
+	.sidebar {
+	width: 26%;
+	position: relative;
+
+		img {max-width: 100%; height: auto;}
+
+		h2 {
+		text-align: center;
+		font-family: $bastia;
+		font-size: 25px;
+		margin: 0;}
+	
+	
+		/* perfil */
+		.box-perfil {
+		width: 100%;
+		background: $opaco_claro;
+		margin-bottom: 40px;
+		padding-bottom: 7px;
+		list-style: none;
+		text-align: left; 
+	
+			h2 {margin: 28px 0 17px;}
+		
+			.descricao-perfil {
+			margin: 0 0 15px; 
+			padding: 20px;
+			text-align: center;
+			font-size: 15px;
+			line-height: 24px;
+			}	
+			
+			.btn-sidebar {
+			margin-top: 20px;
+			background: none;
+			border: none;
+			outline: none;
+			border-bottom: 2px solid $opaco;
+			text-transform: uppercase;
+			font-weight: 600;
+			color: $opaco;
+			letter-spacing: 1px;
+			@include transition(all .3s ease);
+
+				.fas {
+					margin-left: 5px;
+					@include transition(all .3s ease);
+				}
+
+				&:hover {
+				color: $roxo;
+				border-color: $roxo;
+
+					.fas {
+						transform: translate3d(5px, 0, 0);
+					}
+				} 
+			}
+		}
+	
+		.box-sidebar {
+		width: 100%;
+		padding: 0;
+		margin-bottom: 40px;
+		list-style: none;
+		text-align: center; 
+
+			h2 {margin-bottom: 20px;}
+		}			
+	}
+}
+
+// --------------------- BLOG - PAGINAÇÃO
+.paginacao {
+clear: both;
+margin: 20px auto 120px;
+display: table;
+text-align: center;
+padding: 0;
+position: relative;
+
+	span, a {
+		@extend .extend-paginacao;
+		display: block;
+		float: left;
+		color: $preto
+
+	}	
+
+	a:hover {background: $roxo; color: $branco}
+
+	.current, .current a {
+		@extend .extend-paginacao;
+		background: $roxo;
+		color: $branco
+	}
+}
+
+
+
+
+
+
+// --------------------- FOOTER
+.footer-inteiro {
+width: 100%;
+position: relative;
+margin: 0 auto;
+padding-top: 70px;
+padding-bottom: 80px;
+background: $opaco_claro;
+
+
+	.wrap-footer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 96.8%;
+	margin: 0 auto;
+	padding: 30px 0 15px;
+
+		@include breakpoint(992) {
+			flex-direction: column;
+		}
+
+		.logo {
+		width: 90px;
+
+			@include breakpoint(992) {
+			margin-bottom: 30px;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		}
+
+		.itens-contato {
+		width: 57%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+			@include breakpoint(1280) {
+				width: 65%;
+			}
+			
+			@include breakpoint(1200) {
+				width: 77%;
+			}	
+			
+			@include breakpoint(992) {
+				width: 100%;
+			}	
+			
+			@include breakpoint(992) {
+				flex-direction: column;
+			}
+
+			.redes-sociais {
+			text-align: right;
+
+				a {
+					display: inline-block;
+					text-align: center;
+					margin-left: 7px;
+					padding-top: 8px;
+					height: 37px;
+					width: 37px;
+					background: $opaco;
+					color: $branco;
+					font-size: 14px;
+					@include border-radius(30px);
+					@include transition(all .3s ease);
+
+					&:hover {
+						background: $roxo;
+						color: $branco;
+					}
+				}
+			}		
+
+			a {
+			text-transform: uppercase;
+			font-weight: 500;
+			font-size: 13px;
+			letter-spacing: 1px;
+			color: $preto;
+			border-bottom: 2px solid $opaco_claro;
+
+				@include breakpoint(375) {
+					font-size: 12px;
+				}
+	
+				&:hover {color: $roxo; border-bottom: 2px solid $roxo;}
+			}
+
+			.email {
+			width: 50%;
+			text-align: center;
+
+				@include breakpoint(767) {
+					margin: 20px 0;
+					width: 100%;
+				}
+	
+				.far {
+					margin-right: 5px; 
+					color: $roxo;
+				}
+			}
+	
+			.telefone {
+			width: 20%;
+			text-align: right;
+
+				@include breakpoint(767) {
+					width: 100%;
+					text-align: center;
+				}
+	
+				.fab {
+					margin-right: 5px; 
+					color: $roxo;
+					font-size: 15px;
+				}
+			}			
+		}
+	}
+
+	#sb_instagram {
+		padding-bottom: 0 !important;
+	}
+	
+	.sub-footer {
+	color: $preto;
+	font-weight: 400;
+	padding: 6px 0;
+	font-size: 12px;
+	margin-top: 5px;
+
+		.wrap-sub-footer {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+
+			@include breakpoint(992) {
+				.item {width: 48%; text-align: center;}
+
+				.divider {display: none;}
+			}	
+
+			@include breakpoint(575) {
+				.item {width: 100%;}
+			}
+
+			.divider {
+				margin: 0 10px;
+			}
+		}
+
+		a {
+			color: $preto;
+			font-style: italic;
+			&:hover {text-decoration: underline !important;}
+		}
+	}
+}
